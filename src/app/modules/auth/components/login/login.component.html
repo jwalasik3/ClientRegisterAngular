@@ -1,16 +1,37 @@
 <div class="login-wrapper mt-3">
-  <h2>Log In</h2>
+  <h2>Log in</h2>
   <form #f="ngForm" (ngSubmit)="onLogin()">
     <div>
       <mat-form-field>
         <mat-label>Username</mat-label>
-        <input matInput />
+        <input
+          matInput
+          minlength="4"
+          maxlength="30"
+          required
+          name="username"
+          [(ngModel)]="userData.username"
+        />
       </mat-form-field>
     </div>
+    <ng-container
+      *ngIf="f.controls?.['username']?.invalid && f.controls?.['username']?.touched && f.controls?.['username']?.dirty"
+    >
+      <app-alert
+        *ngIf="f.controls?.['username']?.errors"
+        [text]="'Username must contain more than 4 signs'"
+      ></app-alert>
+    </ng-container>
     <div>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" />
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          required
+          name="password"
+          [(ngModel)]="userData.password"
+        />
         <button
           mat-icon-button
           matSuffix
@@ -22,9 +43,23 @@
         </button>
       </mat-form-field>
     </div>
+    <ng-container
+      *ngIf="f.controls?.['password']?.invalid && (f.controls?.['password']?.touched || f.controls?.['password']?.dirty)"
+    >
+      <app-alert
+        *ngIf="f.controls?.['password']?.errors"
+        [text]="'You must set a password'"
+      ></app-alert>
+    </ng-container>
     <div class="d-flex justify-content-end">
-      <button mat-raised-button>Basic</button>
-      <button mat-raised-button color="primary">Log In</button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!f.valid"
+      >
+        Log in
+      </button>
     </div>
   </form>
 </div>
