@@ -3,7 +3,8 @@
     <span>Client Register</span>
     <span class="spacer"></span>
     <button mat-button routerLink="/">Main Page</button>
-    <button mat-button routerLink="/login">Login</button>
+    <button mat-button routerLink="/login" *ngIf="!user">Login</button>
+    <button mat-button (click)="logout()" *ngIf="user">Logout</button>
     <button mat-button routerLink="/clients">Clients</button>
   </mat-toolbar>
 </nav>

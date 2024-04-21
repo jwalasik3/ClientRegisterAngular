@@ -1,6 +1,27 @@
 {
   "users": [
-    { "id": "1", "email": "a title", "password": "123", "username": "test123" }
+    {
+      "id": "1",
+      "email": "a title",
+      "password": "123",
+      "username": "test123"
+    },
+    {
+      "email": "admin@admin.com",
+      "username": "admin",
+      "password": "admin",
+      "id": "c0E9RWO"
+    },
+    {
+      "email": "",
+      "username": "",
+      "password": "",
+      "hobbies": [
+        "",
+        ""
+      ],
+      "id": "ra8dUel"
+    }
   ],
   "clients": [
     {

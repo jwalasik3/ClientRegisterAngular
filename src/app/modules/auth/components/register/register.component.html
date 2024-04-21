@@ -1,1 +1,66 @@
-<p>register works!</p>
+<div class="register-wrapper mt-3">
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+        <mat-error *ngIf="controls.email.invalid">{{
+          getErrorMessage(controls.username)
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="test@gmail.com" formControlName="email" />
+        <mat-error *ngIf="controls.email.invalid">{{
+          getErrorMessage(controls.email)
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <mat-error *ngIf="controls.email.invalid">{{
+          getErrorMessage(controls.password)
+        }}</mat-error>
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <!-- <ng-container formArrayName="hobbies">
+      <div *ngFor="let hobby of controls.hobbies.controls; index as i">
+        <input type="text" [formControlName]="i" />
+        <button class="btn btn-sm btn-danger" (click)="removeControl(i)">
+          X
+        </button>
+      </div>
+    </ng-container>
+    <button (click)="addControl()" type="button">Add hobby</button> -->
+    <div class="d-flex justify-content-end">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="registerForm.invalid"
+      >
+        Register
+      </button>
+    </div>
+    <!-- <app-alert *ngIf="errorMessage" [text]="errorMessage"></app-alert> -->
+  </form>
+  <app-alert *ngIf="errorMessage" [text]="errorMessage"></app-alert>
+</div>

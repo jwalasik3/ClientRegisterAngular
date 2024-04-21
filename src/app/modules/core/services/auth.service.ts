@@ -1,8 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { GetUsersResponse, User, UserLoginData } from '../models/user.model';
+import {
+  GetUsersResponse,
+  PostUser,
+  PostUserResponse,
+  User,
+  UserLoginData,
+} from '../models/user.model';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -24,7 +30,40 @@ export class AuthService {
       ),
       map((userArr) =>
         userArr.map((user) => new User(user.email, user.username))
-      )
+      ),
+      tap((userArr) => this.handleAuthentication(userArr))
     );
+  }
+
+  register(userData: PostUser): Observable<PostUserResponse> {
+    return this.http.post<PostUserResponse>(`${this.apiUrl}/users`, userData);
+  }
+
+  logout() {
+    this.user.next(null);
+    this.router.navigate(['/logowanie']);
+    localStorage.removeItem('user');
+  }
+
+  autoLogin() {
+    const userData: { email: string; username: string } = JSON.parse(
+      localStorage.getItem('user') as string
+    );
+    if (!userData) {
+      return;
+    }
+    const user = new User(userData.email, userData.username);
+    this.user.next(user);
+  }
+
+  private handleAuthentication(userArr: User[]) {
+    if (userArr.length === 0) {
+      return;
+    }
+    const user: User = userArr[0];
+    this.user.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
+
+    this.router.navigate(['/clients']);
   }
 }

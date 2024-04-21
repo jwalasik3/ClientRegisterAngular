@@ -24,6 +24,9 @@ export class LoginComponent {
           this.errorMessage = 'Incorrect username or password. Try again.';
         }
       },
+      error: (err) => {
+        this.errorMessage = 'An error occured';
+      },
     });
   }
 }
