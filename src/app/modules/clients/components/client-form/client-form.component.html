@@ -1,0 +1,71 @@
+<div class="client-form-wrapper mt-3">
+  <h2>Add new Client</h2>
+  <form [formGroup]="clientForm" (ngSubmit)="onAddClient()">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstname" />
+        <mat-error *ngIf="controls.firstname.invalid">{{
+          getErrorMessage(controls.firstname)
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Surname</mat-label>
+        <input matInput formControlName="surname" />
+        <mat-error *ngIf="controls.surname.invalid">{{
+          getErrorMessage(controls.surname)
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="test@gmail.com" formControlName="email" />
+        <mat-error *ngIf="controls.email.invalid">{{
+          getErrorMessage(controls.email)
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phone" />
+        <mat-error *ngIf="controls.phone.invalid">{{
+          getErrorMessage(controls.phone)
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" />
+        <mat-error *ngIf="controls.address.invalid">{{
+          getErrorMessage(controls.address)
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Post Code</mat-label>
+        <input matInput formControlName="postcode" />
+        <mat-error *ngIf="controls.postcode.invalid">{{
+          getErrorMessage(controls.postcode)
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="clientForm.invalid"
+      >
+        Add new Client
+      </button>
+    </div>
+    <!-- <app-alert *ngIf="errorMessage" [text]="errorMessage"></app-alert> -->
+  </form>
+  <!-- <app-alert *ngIf="errorMessage" [text]="errorMessage"></app-alert> -->
+</div>

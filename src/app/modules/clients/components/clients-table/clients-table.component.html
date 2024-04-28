@@ -34,7 +34,13 @@
       <ng-container matColumnDef="buttons">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row">
-          <button mat-raised-button color="primary">Details</button>
+          <button
+            mat-raised-button
+            color="primary"
+            [routerLink]="'/clients/' + row.id"
+          >
+            Details
+          </button>
         </td>
       </ng-container>
 

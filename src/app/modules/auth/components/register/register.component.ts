@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/modules/core/services/auth.service';
+import { FormsService } from 'src/app/modules/core/services/forms.service';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +35,11 @@ export class RegisterComponent implements OnInit {
     // { updateOn: 'submit' }
   );
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private formsService: FormsService
+  ) {}
 
   get controls() {
     return this.registerForm.controls;
@@ -68,18 +73,6 @@ export class RegisterComponent implements OnInit {
   }
 
   getErrorMessage(control: FormControl) {
-    if (control.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    if (control.hasError('minlength')) {
-      return 'Email too short';
-    }
-
-    if (control.hasError('maxlength')) {
-      return 'Email too long';
-    }
-
-    return control.hasError('email') ? 'Not a valid email' : '';
+    return this.formsService.getErrorMessage(control);
   }
 }

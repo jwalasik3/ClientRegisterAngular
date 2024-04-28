@@ -5,6 +5,9 @@
     <button mat-button routerLink="/">Main Page</button>
     <button mat-button routerLink="/login" *ngIf="!user">Login</button>
     <button mat-button (click)="logout()" *ngIf="user">Logout</button>
-    <button mat-button routerLink="/clients">Clients</button>
+    <button mat-button routerLink="/clients" *ngIf="user">Clients</button>
+    <button mat-button routerLink="/clients/add" *ngIf="user">
+      Add Client
+    </button>
   </mat-toolbar>
 </nav>
