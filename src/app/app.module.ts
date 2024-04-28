@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
 import { HomeModule } from './modules/home/home.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { ClientsModule } from './modules/clients/clients.module';
+import ClientsModule from './modules/clients/clients.module';
 
 @NgModule({
   declarations: [AppComponent],

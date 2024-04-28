@@ -11,11 +11,11 @@ export class FormsService {
     }
 
     if (control.hasError('minlength')) {
-      return 'Email too short';
+      return 'Input too short';
     }
 
     if (control.hasError('maxlength')) {
-      return 'Email too long';
+      return 'Input too long';
     }
 
     return control.hasError('email') ? 'Not a valid email' : '';

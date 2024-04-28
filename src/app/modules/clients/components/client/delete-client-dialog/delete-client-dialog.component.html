@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Do you want to delete a client?</h2>
+<mat-dialog-content>
+  <p>Name and Surname:</p>
+  <p>{{ client.firstname }} {{ client.surname }}</p>
+  <app-alert *ngIf="errorMessage">{{ errorMessage }}</app-alert>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button color="primary" mat-button mat-dialog-close>Cancel</button>
+  <button color="warn" mat-button (click)="onDelete()" cdkFocusInitial>
+    Delete
+  </button>
+</mat-dialog-actions>

@@ -16,37 +16,31 @@
       "email": "",
       "username": "",
       "password": "",
-      "hobbies": ["", ""],
+      "hobbies": [
+        "",
+        ""
+      ],
       "id": "ra8dUel"
     }
   ],
   "clients": [
     {
-      "id": "1",
-      "firstname": "Test",
-      "surname": "Testowy",
-      "email": "test@gmail.com",
-      "phone": "1213456789",
-      "address": "Chuja 14",
-      "postcode": "000-00"
+      "firstname": "Andrzej",
+      "surname": "Duda",
+      "email": "aduda@gmail.com",
+      "phone": "123456789",
+      "address": "Warszawa ",
+      "postcode": "00-000",
+      "id": "OCZzp77"
     },
     {
-      "id": "2",
-      "firstname": "Test2",
-      "surname": "Testowy2",
-      "email": "test2@gmail.com",
-      "phone": "1213456789",
-      "address": "Chuja 14",
-      "postcode": "000-00"
-    },
-    {
-      "id": "3",
-      "firstname": "Test3",
-      "surname": "Testowy3",
-      "email": "test3@gmail.com",
-      "phone": "1213456789",
-      "address": "Chuja 14",
-      "postcode": "000-00"
+      "firstname": "Grzegorz",
+      "surname": "Wazny",
+      "email": "gwazny@gmail.com",
+      "phone": "123456789",
+      "address": "Lipna 11",
+      "postcode": "98-765",
+      "id": "E3sNkkM"
     }
   ]
 }
