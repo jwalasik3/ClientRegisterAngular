@@ -8,6 +8,7 @@ import {
 } from 'src/app/modules/core/models/client.model';
 import { ClientsService } from 'src/app/modules/core/services/clients.service';
 import { FormsService } from 'src/app/modules/core/services/forms.service';
+import { postcodeValidator } from 'src/app/modules/shared/validators/postcode.validator';
 
 @Component({
   selector: 'app-client-form',
@@ -25,9 +26,10 @@ export class ClientFormComponent implements OnInit {
       }
       this.router.navigate(['/clients']);
     },
-    error: (err) => {
+    error: () => {
       this.errorMessage = 'An error occureed';
     },
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     complete: () => {},
   };
   @Input() editMode = false;
@@ -72,7 +74,7 @@ export class ClientFormComponent implements OnInit {
       }),
       postcode: new FormControl(this.editMode ? this.client.postcode : '', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, postcodeValidator()],
       }),
     });
   }

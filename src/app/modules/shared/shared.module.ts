@@ -5,10 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertComponent } from './components/alert/alert.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PhoneControlComponent } from './controls/phone-control/phone-control.component';
 
 @NgModule({
-  declarations: [AlertComponent],
-  imports: [CommonModule],
+  declarations: [AlertComponent, PhoneControlComponent],
+  imports: [CommonModule, ReactiveFormsModule, MaterialModule],
   exports: [
     CommonModule,
     MaterialModule,
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     AlertComponent,
+    PhoneControlComponent,
   ],
 })
 export class SharedModule {}

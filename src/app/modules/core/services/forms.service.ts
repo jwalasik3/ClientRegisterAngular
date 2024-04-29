@@ -18,6 +18,10 @@ export class FormsService {
       return 'Input too long';
     }
 
+    if (control.hasError('invalidPostcode')) {
+      return 'Postcode is invalid';
+    }
+
     return control.hasError('email') ? 'Not a valid email' : '';
   }
 }
